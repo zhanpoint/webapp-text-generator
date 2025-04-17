@@ -8,6 +8,7 @@ export async function POST(request: NextRequest) {
         files,
     } = body
     const { user } = getInfo(request)
-    const res = await client.createChatMessage(inputs, user, true, files)
+    const query = body.query || inputs.name || "default query"
+    const res = await client.createChatMessage(inputs, query, user, 'streaming', files)
     return new Response(res.data as any)
 } 

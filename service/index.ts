@@ -7,7 +7,7 @@ export const sendCompletionMessage = async (body: Record<string, any>, { onData,
   onCompleted: IOnCompleted
   onError: IOnError
 }) => {
-  return ssePost('completion-messages', {
+  return ssePost('chat-messages', {
     body: {
       ...body,
       response_mode: 'streaming',
